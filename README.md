@@ -1,4 +1,6 @@
-# LibraryArchiveApp
+## LibraryArchiveApp
+Entity Framework Core Code First ile basit bir örnek.
+
 <br><br>
 
 ![Ekran görüntüsü 2022-09-10 231027](https://user-images.githubusercontent.com/96810885/189500477-871599a7-dde9-4e8f-bec2-456fc2df8987.png)
