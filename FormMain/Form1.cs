@@ -1,6 +1,7 @@
 using FormMain.Context;
 using FormMain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FormMain
 {
@@ -9,6 +10,10 @@ namespace FormMain
         public Form1()
         {
             InitializeComponent();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            BackgroundImage = Image.FromFile(Application.StartupPath + @"\libraryPicture.JPG");
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -27,12 +32,38 @@ namespace FormMain
         private void btnGet_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            GetBooks();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Form2().ShowDialog();
+        }
+
+
+        async void GetBooks()
+        {
             using (LibDbContext db = new())
             {
-                var books = db.Books.Include(x => x.Authors).Include(x => x.Kinds).Include(x => x.Language).Include(x => x.Publisher).ToList();
+                List<Book> books = new List<Book>();
+                if (String.IsNullOrEmpty(textBox1.Text))
+                {
+                    books = await db.Books.Include(x => x.Authors)
+                    .Include(x => x.Kinds)
+                    .Include(x => x.Language)
+                    .Include(x => x.Publisher)
+                    .ToListAsync();
+                }
+                else
+                {
+                    books = await db.Books.Include(x => x.Authors)
+                    .Include(x => x.Kinds)
+                    .Include(x => x.Language)
+                    .Include(x => x.Publisher)
+                    .Where(x => (x.Title == textBox1.Text) || (x.Publisher.PublisherName == textBox1.Text) || x.Kinds.Any(a => a.KindName == textBox1.Text)).ToListAsync();
+                }
 
-                var syc = 0;
+                int syc = 0;
                 foreach (var book in books)
                 {
                     syc = dataGridView1.Rows.Add();
@@ -47,11 +78,6 @@ namespace FormMain
                     syc++;
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Form2().ShowDialog();
         }
     }
 }

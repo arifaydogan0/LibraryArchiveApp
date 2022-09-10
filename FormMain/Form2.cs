@@ -14,6 +14,12 @@ namespace FormMain
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            /* Kayıt ekle. */
+            AddBook();
+        }
+
+        async void AddBook()
+        {
             using (LibDbContext db = new())
             {
                 Book book = new();
@@ -36,21 +42,21 @@ namespace FormMain
                     authors.Add(new Author() { Name = item.ToUpper() });
                 book.Authors = authors;
 
-                Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).ToList().FirstOrDefault();
+                Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).FirstOrDefault();
                 if (p == null)
                 {
                     p = new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
                     db.Publishers.Add(p);
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                 }
                 book.PublisherId = p.PublisherId;
 
-                Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).ToList().FirstOrDefault();
+                Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).FirstOrDefault();
                 if (l == null)
                 {
                     l = new Language() { LanguageName = txtLanguage.Text.ToUpper() };
                     db.Languages.Add(l);
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                 }
                 book.LanguageId = l.LanguageId;
 
@@ -61,7 +67,7 @@ namespace FormMain
                 }
 
                 db.Books.Add(book);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 MessageBox.Show("Yeni Kayıt Eklendi.");
 
             }
