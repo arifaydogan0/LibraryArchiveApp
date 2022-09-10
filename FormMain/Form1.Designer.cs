@@ -34,6 +34,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piece = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sdfsdfsd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +72,18 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 241);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sdfsdfsd,
+            this.Column4,
+            this.Column7,
+            this.Column3,
+            this.Column2,
+            this.Column1,
+            this.Column5,
+            this.Column6});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 240);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.RowHeadersWidth = 55;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 25;
@@ -93,6 +113,69 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // BookName
+            // 
+            this.BookName.HeaderText = "Title";
+            this.BookName.Name = "BookName";
+            // 
+            // Piece
+            // 
+            this.Piece.HeaderText = "Piece";
+            this.Piece.Name = "Piece";
+            // 
+            // Kind
+            // 
+            this.Kind.HeaderText = "Kind";
+            this.Kind.Name = "Kind";
+            // 
+            // sdfsdfsd
+            // 
+            this.sdfsdfsd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.sdfsdfsd.HeaderText = "Title";
+            this.sdfsdfsd.Name = "sdfsdfsd";
+            this.sdfsdfsd.Width = 21;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Author";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 83;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Kind";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 66;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Language";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 103;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Page Count";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 114;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Piece";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 71;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Publisher";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Publish Date";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 122;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -120,5 +203,16 @@
         private DataGridView dataGridView1;
         private Label label2;
         private Button button1;
+        private DataGridViewTextBoxColumn BookName;
+        private DataGridViewTextBoxColumn Piece;
+        private DataGridViewTextBoxColumn Kind;
+        private DataGridViewTextBoxColumn sdfsdfsd;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

@@ -10,8 +10,8 @@ namespace FormMain.Entities
     {
         public int PublisherId { get; set; }
         public string PublisherName { get; set; }
-        public string ContactNo { get; set; }
-        public string Adress { get; set; }
+        public string? ContactNo { get; set; }
+        public string? Adress { get; set; }
         public int? LanguageId { get; set; }
 
 

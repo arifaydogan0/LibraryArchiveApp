@@ -25,10 +25,24 @@ namespace FormMain
 
         private void btnGet_Click(object sender, EventArgs e)
         {
+
             using (LibDbContext db = new())
             {
-                var books = db.Books.Where(x => x.Title == textBox1.Text).ToList();
-                dataGridView1.DataSource = books;
+                var books = db.Books.ToList();
+
+                var syc = 0;
+                foreach (var book in books)
+                {
+                    syc = dataGridView1.Rows.Add();
+                    dataGridView1.Rows[syc].Cells[0].Value = book.Title;
+                    dataGridView1.Rows[syc].Cells[1].Value = book.Authors;
+                    dataGridView1.Rows[syc].Cells[2].Value = book.Language?.LanguageName ?? " ";
+                    dataGridView1.Rows[syc].Cells[3].Value = book.PageCount;
+                    dataGridView1.Rows[syc].Cells[4].Value = book.Piece;
+                    dataGridView1.Rows[syc].Cells[5].Value = book.Publisher;
+                    dataGridView1.Rows[syc].Cells[6].Value = book.PublishDate.Year;
+                    syc++;
+                }
             }
         }
 

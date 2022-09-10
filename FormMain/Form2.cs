@@ -21,44 +21,55 @@ namespace FormMain
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            using (LibDbContext db = new())
+            try
             {
-                string title = txtTitle.Text;
-                List<string> kinds = txtKind.Text.Split(',').ToList();
-                List<string> authors = txtAuthor.Text.Split(',').ToList();
-                int publisherId = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text).FirstOrDefault()?.PublisherId ?? 0;
-                string language = txtLanguage.Text;
-                int piece = int.Parse(txtPiece.Text);
-                int pageCount = int.Parse(txtPageCount.Text);
-                DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
-
-                List<Kind> kinds2 = new List<Kind>();
-                foreach (var kind in kinds)
-                    kinds2.Add(new Kind() { KindName = kind });
-
-                List<Author> authors2 = new List<Author>();
-                foreach (var author in authors)
-                    authors2.Add(new Author() { Name = author, Surname = author });
-
-                Book book = new Book()
+                using (LibDbContext db = new())
                 {
-                    Title = title,
-                    Piece = piece,
-                    PageCount = pageCount,
-                    PublishDate = publishDate,
-                    Kinds = kinds2,
-                    Authors = authors2,
-                };
+                    string title = txtTitle.Text;
+                    int piece = int.Parse(txtPiece.Text);
+                    int pageCount = int.Parse(txtPageCount.Text);
+                    DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
+                    int publisherId = 0;
 
-                if (db.Books.Where(x => x == book).ToList().Count() != 0)
-                {
-                    MessageBox.Show("Kayıt Zaten Var");
-                    return;
+                    List<Kind> kinds = new List<Kind>();
+                    foreach (var item in txtKind.Text.Split(',').ToList())
+                        kinds.Add(new Kind() { KindName = item });
+
+                    List<Author> authors = new List<Author>();
+                    foreach (var item in txtAuthor.Text.Split(',').ToList())
+                        authors.Add(new Author() { Name = item });
+
+                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text).FirstOrDefault();
+                    if (p == null)
+                        p = new Publisher() { PublisherName = txtPublisher.Text };
+                    publisherId = p.PublisherId;
+
+
+                    Book book = new Book()
+                    {
+                        Title = title,
+                        Piece = piece,
+                        PageCount = pageCount,
+                        PublishDate = publishDate,
+                        PublisherId = publisherId,
+                        Kinds = kinds,
+                        Authors = authors,
+                    };
+
+                    if (db.Books.Where(x => x == book).ToList().Count() != 0)
+                    {
+                        MessageBox.Show("Kayıt Zaten Var");
+                        return;
+                    }
+
+                    db.Books.Add(book);
+                    db.SaveChanges();
+                    MessageBox.Show("Yeni Kayıt Eklendi.");
                 }
-
-                db.Books.Add(book);
-                db.SaveChanges();
-                MessageBox.Show("Yeni Kayıt Eklendi.");
+            }
+            catch
+            {
+                MessageBox.Show("Kayıt Yapılamadı! Eksik veya Hatalı Bilgi Var Lütfen Kontrol Ediniz.");
             }
         }
     }

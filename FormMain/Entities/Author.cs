@@ -10,7 +10,6 @@ namespace FormMain.Entities
     {
         public int AuthorId { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
         public int? LanguageId { get; set; }
 
         public virtual Language Language { get; set; }   //many to one
