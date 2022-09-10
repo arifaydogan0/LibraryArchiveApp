@@ -60,7 +60,7 @@ namespace FormMain
                     .Include(x => x.Kinds)
                     .Include(x => x.Language)
                     .Include(x => x.Publisher)
-                    .Where(x => (x.Title == textBox1.Text) || (x.Publisher.PublisherName == textBox1.Text) || x.Kinds.Any(a => a.KindName == textBox1.Text)).ToListAsync();
+                    .Where(x => (x.Title.Contains(textBox1.Text)) || (x.Publisher.PublisherName.Contains(textBox1.Text)) || x.Kinds.Any(a => a.KindName.Contains(textBox1.Text))).ToListAsync();
                 }
 
                 int syc = 0;
