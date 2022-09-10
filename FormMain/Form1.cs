@@ -26,6 +26,7 @@ namespace FormMain
 
         private void btnGet_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
 
             using (LibDbContext db = new())
             {

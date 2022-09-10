@@ -18,8 +18,11 @@ namespace FormMain
                 try
                 {
                     string title = txtTitle.Text.ToUpper();
+
                     int piece = int.Parse(txtPiece.Text);
+
                     int pageCount = int.Parse(txtPageCount.Text);
+
                     DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
 
                     List<Kind> kinds = new List<Kind>();
@@ -30,24 +33,20 @@ namespace FormMain
                     foreach (var item in txtAuthor.Text.ToUpper().Split(',').ToList())
                         authors.Add(new Author() { Name = item.ToUpper() });
 
-                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).FirstOrDefault();
-                    if (p == null)
-                        p = new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
-                    int publisherId = 0;
-
-                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).FirstOrDefault();
-                    if (l == null)
-                        l = new Language() { LanguageName = txtLanguage.Text.ToUpper() };
-                    int languageId = 0;
-
+                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).ToList().FirstOrDefault();
+                    p ??= new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
                     db.Publishers.Add(p);
+                    db.SaveChanges();
+                    int publisherId = p.PublisherId;
+
+                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).ToList().FirstOrDefault();
+                    l ??= new Language() { LanguageName = txtLanguage.Text.ToUpper() };
                     db.Languages.Add(l);
                     db.SaveChanges();
+                    int languageId = l.LanguageId;
 
-                    publisherId = p.PublisherId;
-                    languageId = l.LanguageId;
 
-                    Book book = new Book()
+                    Book book = new()
                     {
                         Title = title,
                         Piece = piece,
