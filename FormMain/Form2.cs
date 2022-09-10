@@ -1,14 +1,6 @@
 ﻿using FormMain.Context;
 using FormMain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FormMain
 {
@@ -21,37 +13,39 @@ namespace FormMain
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            using (LibDbContext db = new())
             {
-                using (LibDbContext db = new())
+                try
                 {
-                    string title = txtTitle.Text;
+                    string title = txtTitle.Text.ToUpper();
                     int piece = int.Parse(txtPiece.Text);
                     int pageCount = int.Parse(txtPageCount.Text);
                     DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
-                    int publisherId = 0, languageId = 0;
 
                     List<Kind> kinds = new List<Kind>();
-                    foreach (var item in txtKind.Text.Split(',').ToList())
-                        kinds.Add(new Kind() { KindName = item });
+                    foreach (var item in txtKind.Text.ToUpper().Split(',').ToList())
+                        kinds.Add(new Kind() { KindName = item.ToUpper() });
 
                     List<Author> authors = new List<Author>();
-                    foreach (var item in txtAuthor.Text.Split(',').ToList())
-                        authors.Add(new Author() { Name = item });
+                    foreach (var item in txtAuthor.Text.ToUpper().Split(',').ToList())
+                        authors.Add(new Author() { Name = item.ToUpper() });
 
-                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text).FirstOrDefault();
+                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).FirstOrDefault();
                     if (p == null)
-                        p = new Publisher() { PublisherName = txtPublisher.Text };
+                        p = new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
+                    int publisherId = 0;
 
-                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text).FirstOrDefault();
+                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).FirstOrDefault();
                     if (l == null)
-                        l = new Language() { LanguageName = txtLanguage.Text };
+                        l = new Language() { LanguageName = txtLanguage.Text.ToUpper() };
+                    int languageId = 0;
 
                     db.Publishers.Add(p);
                     db.Languages.Add(l);
                     db.SaveChanges();
-                    publisherId = p.PublisherId;
 
+                    publisherId = p.PublisherId;
+                    languageId = l.LanguageId;
 
                     Book book = new Book()
                     {
@@ -75,11 +69,12 @@ namespace FormMain
                     db.SaveChanges();
                     MessageBox.Show("Yeni Kayıt Eklendi.");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Kayıt Yapılamadı! Eksik veya Hatalı Bilgi Var Lütfen Kontrol Ediniz.\n\n" + ex.Message);
+                }
             }
-            catch
-            {
-                MessageBox.Show("Kayıt Yapılamadı! Eksik veya Hatalı Bilgi Var Lütfen Kontrol Ediniz.");
-            }
+
         }
     }
 }
