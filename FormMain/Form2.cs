@@ -29,7 +29,7 @@ namespace FormMain
                     int piece = int.Parse(txtPiece.Text);
                     int pageCount = int.Parse(txtPageCount.Text);
                     DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
-                    int publisherId = 0;
+                    int publisherId = 0, languageId = 0;
 
                     List<Kind> kinds = new List<Kind>();
                     foreach (var item in txtKind.Text.Split(',').ToList())
@@ -42,6 +42,14 @@ namespace FormMain
                     Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text).FirstOrDefault();
                     if (p == null)
                         p = new Publisher() { PublisherName = txtPublisher.Text };
+
+                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text).FirstOrDefault();
+                    if (l == null)
+                        l = new Language() { LanguageName = txtLanguage.Text };
+
+                    db.Publishers.Add(p);
+                    db.Languages.Add(l);
+                    db.SaveChanges();
                     publisherId = p.PublisherId;
 
 
@@ -52,6 +60,7 @@ namespace FormMain
                         PageCount = pageCount,
                         PublishDate = publishDate,
                         PublisherId = publisherId,
+                        LanguageId = languageId,
                         Kinds = kinds,
                         Authors = authors,
                     };

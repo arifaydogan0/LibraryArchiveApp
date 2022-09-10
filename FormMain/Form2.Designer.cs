@@ -114,7 +114,7 @@
             this.mskPublishDate.Mask = "00/00/0000";
             this.mskPublishDate.Name = "mskPublishDate";
             this.mskPublishDate.Size = new System.Drawing.Size(216, 29);
-            this.mskPublishDate.TabIndex = 1;
+            this.mskPublishDate.TabIndex = 6;
             this.mskPublishDate.ValidatingType = typeof(System.DateTime);
             // 
             // label7
@@ -133,7 +133,7 @@
             this.txtLanguage.Location = new System.Drawing.Point(143, 259);
             this.txtLanguage.Name = "txtLanguage";
             this.txtLanguage.Size = new System.Drawing.Size(216, 29);
-            this.txtLanguage.TabIndex = 2;
+            this.txtLanguage.TabIndex = 7;
             // 
             // txtPublisher
             // 
@@ -141,7 +141,7 @@
             this.txtPublisher.Location = new System.Drawing.Point(143, 189);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(216, 29);
-            this.txtPublisher.TabIndex = 2;
+            this.txtPublisher.TabIndex = 5;
             // 
             // txtPiece
             // 
@@ -149,7 +149,7 @@
             this.txtPiece.Location = new System.Drawing.Point(143, 154);
             this.txtPiece.Name = "txtPiece";
             this.txtPiece.Size = new System.Drawing.Size(216, 29);
-            this.txtPiece.TabIndex = 2;
+            this.txtPiece.TabIndex = 4;
             // 
             // txtPageCount
             // 
@@ -157,7 +157,7 @@
             this.txtPageCount.Location = new System.Drawing.Point(143, 119);
             this.txtPageCount.Name = "txtPageCount";
             this.txtPageCount.Size = new System.Drawing.Size(216, 29);
-            this.txtPageCount.TabIndex = 2;
+            this.txtPageCount.TabIndex = 3;
             // 
             // txtKind
             // 
@@ -173,7 +173,7 @@
             this.txtTitle.Location = new System.Drawing.Point(143, 49);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(216, 29);
-            this.txtTitle.TabIndex = 2;
+            this.txtTitle.TabIndex = 1;
             // 
             // btnSave
             // 
@@ -183,7 +183,7 @@
             this.btnSave.Location = new System.Drawing.Point(171, 337);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(160, 38);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -204,7 +204,7 @@
             this.txtAuthor.Location = new System.Drawing.Point(143, 294);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(216, 29);
-            this.txtAuthor.TabIndex = 2;
+            this.txtAuthor.TabIndex = 8;
             // 
             // Form2
             // 
