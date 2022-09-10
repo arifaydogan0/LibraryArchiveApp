@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormMain", "FormMain\FormMain.csproj", "{26CAAAA4-6564-426D-BB95-B6C89C83F36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibbArcApp", "FormMain\LibbArcApp.csproj", "{26CAAAA4-6564-426D-BB95-B6C89C83F36A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
