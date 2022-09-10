@@ -1,5 +1,6 @@
 ﻿using FormMain.Context;
 using FormMain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace FormMain
@@ -15,65 +16,55 @@ namespace FormMain
         {
             using (LibDbContext db = new())
             {
-                try
+                Book book = new();
+
+                book.Title = txtTitle.Text.ToUpper();
+
+                book.Piece = int.Parse(txtPiece.Text);
+
+                book.PageCount = int.Parse(txtPageCount.Text);
+
+                book.PublishDate = Convert.ToDateTime(mskPublishDate.Text);
+
+                List<Kind> kinds = new List<Kind>();
+                foreach (var item in txtKind.Text.ToUpper().Split(',').ToList())
+                    kinds.Add(new Kind() { KindName = item.ToUpper() });
+                book.Kinds = kinds;
+
+                List<Author> authors = new List<Author>();
+                foreach (var item in txtAuthor.Text.ToUpper().Split(',').ToList())
+                    authors.Add(new Author() { Name = item.ToUpper() });
+                book.Authors = authors;
+
+                Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).ToList().FirstOrDefault();
+                if (p == null)
                 {
-                    string title = txtTitle.Text.ToUpper();
-
-                    int piece = int.Parse(txtPiece.Text);
-
-                    int pageCount = int.Parse(txtPageCount.Text);
-
-                    DateTime publishDate = Convert.ToDateTime(mskPublishDate.Text);
-
-                    List<Kind> kinds = new List<Kind>();
-                    foreach (var item in txtKind.Text.ToUpper().Split(',').ToList())
-                        kinds.Add(new Kind() { KindName = item.ToUpper() });
-
-                    List<Author> authors = new List<Author>();
-                    foreach (var item in txtAuthor.Text.ToUpper().Split(',').ToList())
-                        authors.Add(new Author() { Name = item.ToUpper() });
-
-                    Publisher p = db.Publishers.Where(x => x.PublisherName == txtPublisher.Text.ToUpper()).ToList().FirstOrDefault();
-                    p ??= new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
+                    p = new Publisher() { PublisherName = txtPublisher.Text.ToUpper() };
                     db.Publishers.Add(p);
                     db.SaveChanges();
-                    int publisherId = p.PublisherId;
+                }
+                book.PublisherId = p.PublisherId;
 
-                    Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).ToList().FirstOrDefault();
-                    l ??= new Language() { LanguageName = txtLanguage.Text.ToUpper() };
+                Language l = db.Languages.Where(x => x.LanguageName == txtLanguage.Text.ToUpper()).ToList().FirstOrDefault();
+                if (l == null)
+                {
+                    l = new Language() { LanguageName = txtLanguage.Text.ToUpper() };
                     db.Languages.Add(l);
                     db.SaveChanges();
-                    int languageId = l.LanguageId;
-
-
-                    Book book = new()
-                    {
-                        Title = title,
-                        Piece = piece,
-                        PageCount = pageCount,
-                        PublishDate = publishDate,
-                        PublisherId = publisherId,
-                        LanguageId = languageId,
-                        Kinds = kinds,
-                        Authors = authors,
-                    };
-
-                    if (db.Books.Where(x => x == book).ToList().Count() != 0)
-                    {
-                        MessageBox.Show("Kayıt Zaten Var");
-                        return;
-                    }
-
-                    db.Books.Add(book);
-                    db.SaveChanges();
-                    MessageBox.Show("Yeni Kayıt Eklendi.");
                 }
-                catch (Exception ex)
+                book.LanguageId = l.LanguageId;
+
+                if (db.Books.ToList().Where(x => x.Title == book.Title && x.PublishDate == book.PublishDate && x.LanguageId == book.LanguageId && x.PublisherId == book.PublisherId && x.PageCount == book.PageCount).FirstOrDefault() != null)
                 {
-                    MessageBox.Show("Kayıt Yapılamadı! Eksik veya Hatalı Bilgi Var Lütfen Kontrol Ediniz.\n\n" + ex.Message);
+                    MessageBox.Show("Kayıt Zaten Var");
+                    return;
                 }
-            }
 
+                db.Books.Add(book);
+                db.SaveChanges();
+                MessageBox.Show("Yeni Kayıt Eklendi.");
+
+            }
         }
     }
 }
