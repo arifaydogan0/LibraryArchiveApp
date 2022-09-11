@@ -32,6 +32,7 @@ namespace FormMain
         private void btnGet_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            panel1.Visible = true;
             GetBooks();
         }
 
@@ -74,10 +75,31 @@ namespace FormMain
                     dataGridView1.Rows[syc].Cells[4].Value = book.PageCount;
                     dataGridView1.Rows[syc].Cells[5].Value = book.Piece;
                     dataGridView1.Rows[syc].Cells[6].Value = book.Publisher?.PublisherName ?? " ";
-                    dataGridView1.Rows[syc].Cells[7].Value = book.PublishDate.Year;
+                    dataGridView1.Rows[syc].Cells[7].Value = book.PublishDate.ToShortDateString();
                     syc++;
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            label3.Font = new Font(label3.Font.FontFamily, 15f, FontStyle.Bold);
+            panel1.Visible = false;
+        }
+
+        private void label3_MouseHover(object sender, EventArgs e)
+        {
+            label3.Font = new Font(label3.Font.FontFamily, 13f, FontStyle.Bold);
+        }
+
+        private void label3_MouseLeave(object sender, EventArgs e)
+        {
+            label3.Font = new Font(label3.Font.FontFamily, 15f, FontStyle.Bold);
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

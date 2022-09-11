@@ -45,6 +45,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -206,12 +207,24 @@
             this.txtAuthor.Size = new System.Drawing.Size(216, 29);
             this.txtAuthor.TabIndex = 8;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(12, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(397, 21);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Please entry the properties of the book you want to add.";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(422, 396);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtAuthor);
@@ -231,7 +244,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "New Record";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +269,6 @@
         private Button btnSave;
         private Label label8;
         private TextBox txtAuthor;
+        private Label label9;
     }
 }
