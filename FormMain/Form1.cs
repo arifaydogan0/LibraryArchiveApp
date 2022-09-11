@@ -97,9 +97,5 @@ namespace FormMain
             label3.Font = new Font(label3.Font.FontFamily, 15f, FontStyle.Bold);
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
