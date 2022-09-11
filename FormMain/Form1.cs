@@ -33,7 +33,7 @@ namespace FormMain
         {
             dataGridView1.Rows.Clear();
             panel1.Visible = true;
-            GetBooks();
+            GetBooks(); 
         }
 
         private void button1_Click(object sender, EventArgs e)
