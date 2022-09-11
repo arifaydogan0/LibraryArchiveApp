@@ -1,10 +1,16 @@
 ## LibraryArchiveApp
-Entity Framework Core Code First ile basit bir örnek.
+
+Entity Framework Core ile kütüphane veri tabanı tasarımı.
 
 <br><br>
 
-![Ekran görüntüsü 2022-09-10 231027](https://user-images.githubusercontent.com/96810885/189500477-871599a7-dde9-4e8f-bec2-456fc2df8987.png)
+![Ekran görüntüsü 2022-09-11 030624](https://user-images.githubusercontent.com/96810885/189506384-0ada5512-c3f7-4dc4-a985-830296093fcc.png)
 
 <br><br>
 
-![Ekran görüntüsü 2022-09-10 231554](https://user-images.githubusercontent.com/96810885/189500474-52604236-a839-4ecf-92df-9f3f162c50b0.png)
+![Ekran görüntüsü 2022-09-11 032854](https://user-images.githubusercontent.com/96810885/189506387-7cf3dcb6-4382-470d-99b7-094f6b93d9c3.png)
+
+<br><br>
+
+![Ekran görüntüsü 2022-09-11 032928](https://user-images.githubusercontent.com/96810885/189506393-543c3e02-f933-42b0-88e1-d1101a2b8728.png)
+
