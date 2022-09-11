@@ -76,9 +76,10 @@
             // 
             // btnGet
             // 
-            this.btnGet.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnGet.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnGet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGet.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnGet.Location = new System.Drawing.Point(755, 120);
             this.btnGet.Margin = new System.Windows.Forms.Padding(4);
             this.btnGet.Name = "btnGet";
@@ -220,9 +221,10 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.PowderBlue;
+            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(877, 120);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
@@ -250,9 +252,10 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.PowderBlue;
+            this.button2.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(999, 120);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
