@@ -1,9 +1,9 @@
-using FormMain.Context;
-using FormMain.Entities;
+using App.Context;
+using App.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
-namespace FormMain
+namespace App
 {
     public partial class Form1 : Form
     {

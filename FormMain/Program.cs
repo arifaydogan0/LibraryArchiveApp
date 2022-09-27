@@ -1,4 +1,4 @@
-namespace FormMain
+namespace App
 {
     internal static class Program
     {

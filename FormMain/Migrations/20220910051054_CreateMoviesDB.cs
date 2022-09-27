@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FormMain.Migrations
+namespace App.Migrations
 {
     public partial class CreateMoviesDB : Migration
     {

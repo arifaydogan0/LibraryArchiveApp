@@ -1,9 +1,9 @@
-﻿using FormMain.Context;
-using FormMain.Entities;
+﻿using App.Context;
+using App.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace FormMain
+namespace App
 {
     public partial class Form2 : Form
     {

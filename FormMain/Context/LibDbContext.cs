@@ -1,7 +1,7 @@
-﻿using FormMain.Entities;
+﻿using App.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FormMain.Context
+namespace App.Context
 {
     public class LibDbContext : DbContext
     {

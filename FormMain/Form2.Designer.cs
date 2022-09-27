@@ -1,4 +1,4 @@
-﻿namespace FormMain
+﻿namespace App
 {
     partial class Form2
     {
